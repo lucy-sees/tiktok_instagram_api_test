@@ -1,6 +1,8 @@
 import axios from "axios"
 import { cookies } from "next/headers"
 
+export const runtime = "nodejs"
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
   const code = searchParams.get("code")
@@ -9,7 +11,7 @@ export async function GET(req: Request) {
     return new Response("No code provided", { status: 400 })
   }
 
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   const code_verifier = cookieStore.get("tt_code_verifier")?.value
 
   if (!code_verifier) {

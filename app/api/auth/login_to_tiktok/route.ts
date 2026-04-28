@@ -1,4 +1,7 @@
 import { cookies } from "next/headers"
+import crypto from "crypto"
+
+export const runtime = "nodejs"
 
 function base64URLEncode(buffer: Buffer) {
   return buffer
@@ -9,7 +12,7 @@ function base64URLEncode(buffer: Buffer) {
 }
 
 export async function GET() {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
 
   const code_verifier = base64URLEncode(crypto.randomBytes(32))
   const hash = crypto.createHash("sha256").update(code_verifier).digest()

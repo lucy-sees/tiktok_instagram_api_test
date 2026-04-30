@@ -4,49 +4,9 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "TikTok Analytics Dashboard | HuruDevs",
+  title: "Creator Dashboard | HuruDevs",
   description:
-    "Connect your TikTok account and visualize your creator data with a modern, interactive dashboard built using Next.js and AI-powered insights.",
-  keywords: [
-    "TikTok API",
-    "TikTok analytics",
-    "creator dashboard",
-    "Next.js project",
-    "social media tools",
-  ],
-  authors: [{ name: "HuruDevs" }],
-  creator: "HuruDevs",
-  metadataBase: new URL("http://localhost:3000"),
-
-  openGraph: {
-    title: "TikTok Analytics Dashboard",
-    description:
-      "Visualize your TikTok profile and insights with a modern developer-built dashboard.",
-    url: "http://localhost:3000",
-    siteName: "HuruDevs",
-    images: [
-      {
-        url: "/og-image.png", // add later
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "TikTok Analytics Dashboard",
-    description:
-      "Connect your TikTok account and explore your creator insights.",
-    images: ["/og-image.png"],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
+    "Connect your social accounts and visualize your creator data with a modern dashboard.",
 }
 
 export default function RootLayout({
@@ -57,7 +17,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white antialiased">
-        {children}
+        <div className="min-h-screen flex flex-col">
+
+          {/* NAVBAR */}
+          <header className="w-full border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+            <h1 className="font-bold text-lg">HuruDevs</h1>
+            <span className="text-sm text-gray-400">
+              Creator Dashboard
+            </span>
+          </header>
+
+          {/* MAIN */}
+          <main className="flex-1">{children}</main>
+
+          {/* FOOTER */}
+          <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-800">
+            Built with Next.js • TikTok API • Future Instagram API
+          </footer>
+        </div>
       </body>
     </html>
   )
